@@ -1226,7 +1226,7 @@ def build(cli: CLIHandler):
     if os.path.exists(BUILD_PATH): shutil.rmtree(BUILD_PATH)
     os.mkdir(BUILD_PATH)
     os.chdir(BUILD_PATH)
-    builder.compile(generate_object=True, clear=False)
+    builder.compile(generate_object=True, clear=False, args=cli.args)
     os.chdir(BASE_PATH)
 
     info("Generating library for x86_64", NO_COLOR)
@@ -1256,7 +1256,7 @@ def build(cli: CLIHandler):
     info("Compilation for x86 started", NO_COLOR)
 
     os.chdir(BUILD_PATH)
-    builder.compile(links = ["-m32"], generate_object=True, clear=False)
+    builder.compile(links = ["-m32"], generate_object=True, clear=False, args=cli.args)
     os.chdir(BASE_PATH)
 
     info("Generating library for x86", NO_COLOR)
